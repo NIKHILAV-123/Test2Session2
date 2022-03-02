@@ -29,11 +29,11 @@ int is_prime(int n)
 {
   if(is_prime==0)
     {
-      printf("it is a prime number");
+      printf("it is a prime number\n");
     }
   else
   {
-    printf("it is composite");
+    printf("it is not a prime number\n");
   }
 }
 int main()
