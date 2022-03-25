@@ -1,1 +1,126 @@
+ 
+ gcc -g p8final.c -lm
+ ./a.out
+Enter the number of sides:
+2
+Enter the point:
+1 
+2
+3
+4
+Enter the point:
+4
+2
+3
+1
+The perimeter of the polygon with 2 sides is 4.242640 gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0xa85: file p8final.c, line 57.
+(gdb) r
+Starting program: /home/runner/Test2Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p8final.c:57
+57  {
+(gdb) n
+59    x=input_n();
+(gdb) s
+input_n () at p8final.c:20
+20  {
+(gdb) n
+22    printf("Enter the number of sides:\n");
+(gdb) n
+Enter the number of sides:
+23    scanf("%d",&n);
+(gdb) n
+2
+24    return n;
+(gdb) n
+25  }
+(gdb) n
+main () at p8final.c:60
+60    input_polygon(x,&p);
+(gdb) s
+input_polygon (n=2, p=0x7ffff4d07990) at p8final.c:41
+41    p->n=n;
+(gdb) n
+42    input_n_lines(p->n,p->l);
+(gdb) s
+input_n_lines (n=2, l=0x7ffff4d07994) at p8final.c:35
+35  {
+(gdb) n
+36    for(int i=0;i<n;i++)
+(gdb) n
+37      l[i]=input_line();
+(gdb) n
+Enter the point:
+1
+2
+3
+4
+36    for(int i=0;i<n;i++)
+(gdb) n
+37      l[i]=input_line();
+(gdb) n
+Enter the point:
+4 
+2
+3
+1
+36    for(int i=0;i<n;i++)
+(gdb) n
+38  }
+(gdb) n
+input_polygon (n=2, p=0x7ffff4d07990) at p8final.c:43
+43    p->perimeter=0.0;
+(gdb) s
+45  }
+(gdb) n
+main () at p8final.c:61
+61    find_perimeter(&p);
+(gdb) s
+find_perimeter (p=0x7ffff4d07990) at p8final.c:48
+48    for(int i=0;i<p->n;i++)
+(gdb) n
+49      p->perimeter+=p->l[i].distance;
+(gdb) n
+48    for(int i=0;i<p->n;i++)
+(gdb) n
+49      p->perimeter+=p->l[i].distance;
+(gdb) n
+48    for(int i=0;i<p->n;i++)
+(gdb) n
+50  }
+(gdb) n
+main () at p8final.c:62
+62    output(p);
+(gdb) s
+output (p=...) at p8final.c:53
+53    printf("The perimeter of the polygon with %d sides is %f",p.n,p.perimeter);
+(gdb) n
+55  }
+(gdb) n
+main () at p8final.c:63
+63    return 0;
+(gdb) n
+64  }
+(gdb) c
+Continuing.
+The perimeter of the polygon with 2 sides is 4.242640[Inferior 1 (process 154) exited normally]
+(gdb) q
+ 

@@ -1,1 +1,128 @@
+ gcc -g p6final.c -lm
+ ./a.out
+Enter the string and substring:
+helloworldhello
+world
+The reverse of world in helloworldhello is 5.
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x8b9: file p6final.c, line 39.
+(gdb) r
+Starting program: /home/runner/Test2Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p6final.c:39
+39  {
+(gdb) n
+41    input_string(string,substring);
+(gdb) s
+input_string (string=0x7ffee0fed240 "\001", substring=0x7ffee0fed260 "0\t")
+    at p6final.c:5
+5     printf("Enter the string and substring:\n");
+(gdb) n
+Enter the string and substring:
+6     scanf("%s%s",string,substring);
+(gdb) n
+helloworldhello
+world
+8   }
+(gdb) n
+main () at p6final.c:42
+42    x=str_reverse(string,substring);
+(gdb) s
+str_reverse (string=0x7ffee0fed240 "helloworldhello", 
+    substring=0x7ffee0fed260 "world") at p6final.c:12
+12    for(i=0;string[i]!='\0';i++)
+(gdb) p string
+$1 = 0x7ffee0fed240 "helloworldhello"
+(gdb) p substring
+$2 = 0x7ffee0fed260 "world"
+(gdb) n
+14        j=0;
+(gdb) n
+15        while(string[i]==substring[j])
+(gdb) n
+12    for(i=0;string[i]!='\0';i++)
+(gdb) n
+14        j=0;
+(gdb) n
+15        while(string[i]==substring[j])
+(gdb) n
+12    for(i=0;string[i]!='\0';i++)
+(gdb) n
+14        j=0;
+(gdb) n
+15        while(string[i]==substring[j])
+(gdb) n
+12    for(i=0;string[i]!='\0';i++)
+(gdb) n
+14        j=0;
+(gdb) n
+15        while(string[i]==substring[j])
+(gdb) n
+12    for(i=0;string[i]!='\0';i++)
+(gdb) n
+14        j=0;
+(gdb) n
+15        while(string[i]==substring[j])
+(gdb) n
+12    for(i=0;string[i]!='\0';i++)
+(gdb) n
+14        j=0;
+(gdb) n
+15        while(string[i]==substring[j])
+(gdb) n
+17            j++;
+(gdb) n
+18            i++;
+(gdb) n
+19            if(substring[j]=='\0')
+(gdb) n
+21            if(string[i]!=substring[j]){
+(gdb) n
+15        while(string[i]==substring[j])
+(gdb) n
+17            j++;
+(gdb) n
+18            i++;
+(gdb) n
+19            if(substring[j]=='\0')
+(gdb) n
+21            if(string[i]!=substring[j]){
+(gdb) n
+15        while(string[i]==substring[j])
+(gdb) n
+17            j++;
+(gdb) n
+18            i++;
+(gdb) p string
+$3 = 0x7ffee0fed240 "helloworldhello"
+(gdb) p substring
+$4 = 0x7ffee0fed260 "world"
+(gdb) n
+19            if(substring[j]=='\0')
+(gdb) n
+21            if(string[i]!=substring[j]){
+(gdb) n
+15        while(string[i]==substring[j])
+(gdb) c
+Continuing.
+The reverse of world in helloworldhello is 5.
+[Inferior 1 (process 123) exited normally]
+(gdb) q
+ 
