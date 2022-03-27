@@ -1,26 +1,44 @@
 #include<stdio.h>
 #include<math.h>
-void input(float *x1,float *y1,float *x2,float *y2)
+
+void input_triangle(float *x1,float *y1,float *x2,float *y2,float *x3,float *y3)
 {
-  printf("Enter the values of x1,y1,x2,y2\n");
-  scanf("%f%f%f%f",x1,y1,x2,y2);
-  
+  printf("Enter the values of x1,y1,x2,y2,x3,y3\n");
+  scanf("%f %f %f %f %f %f",x1,y1,x2,y2,x3,y3);
 }
-void find_distance(float x1,float y1,float x2,float y2,float *distance)
+int is_triangle(float x1, float y1, float x2, float y2,float x3, float y3)
 {
-  *distance= sqrt(pow((x2-x1),2) + pow((y2-y1),2));
-  
-}
-void output(float x1,float y1,float x2,float y2,float distance)
+  float area;
+  area = 0.5*(x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2));
+
+ if(area==0)
+   {
+     return 1;
+   }    
+   else
+   {
+     return 2;    
+   }
+ 
+} 
+
+void output(float x1,float y1,float x2,float y2,float x3,float y3,int istriangle)
 {
-  printf("The distance between the points (%f,%f) and (%f,%f) is %f\n",x1,y1,x2,y2,distance);
-  
+  if(istriangle==1)
+  {
+    printf("it's not a triangle\n");
+  }
+  if(istriangle==2)
+  {
+    printf("it is a triangle\n");
+  }
 }
 int main()
 {
-  float x1,y1,x2,y2,d;
-  input(&x1,&y1,&x2,&y2);
-  find_distance(x1,y1,x2,y2,&d);
-  output(x1,y1,x2,y2,d); 
+   float x1,y1,x2,y2,x3,y3;
+   float area;
+  input_triangle(&x1,&y1,&x2,&y2,&x3,&y3);
+  area=is_triangle(x1,y1,x2,y2,x3,y3);
+  output(x1,y1,x2,y2,x3,y3,area); 
   return 0;
 }
