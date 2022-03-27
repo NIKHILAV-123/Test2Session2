@@ -1,44 +1,33 @@
 #include<stdio.h>
-#include<math.h>
-
-void input_triangle(float *x1,float *y1,float *x2,float *y2,float *x3,float *y3)
+int input()
 {
-  printf("Enter the values of x1,y1,x2,y2,x3,y3\n");
-  scanf("%f %f %f %f %f %f",x1,y1,x2,y2,x3,y3);
+  int n;
+  printf("Enter the number:\n");
+  scanf("%d",&n);
+  return n;
 }
-int is_triangle(float x1, float y1, float x2, float y2,float x3, float y3)
+int find_fibo(int n)
 {
-  float area;
-  area = 0.5*(x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2));
-
- if(area==0)
-   {
-     return 1;
-   }    
-   else
-   {
-     return 2;    
-   }
- 
-} 
-
-void output(float x1,float y1,float x2,float y2,float x3,float y3,int istriangle)
+  int f=0,f1=1,s;
+  if(n<=1)
+    return n;
+  for(int i=2;i<=n;i++)
+    {
+      s=f+f1;
+      f=f1;
+      f1=s;
+    }
+  return s;
+}
+void output(int n,int fibo)
 {
-  if(istriangle==1)
-  {
-    printf("it's not a triangle\n");
-  }
-  if(istriangle==2)
-  {
-    printf("it is a triangle\n");
-  }
+  printf("The %dth number in fibonacci sequence is %d.",n,fibo);
 }
 int main()
 {
-   float x1,y1,x2,y2,x3,y3;
-   float area;
-  input_triangle(&x1,&y1,&x2,&y2,&x3,&y3);
-  area=is_triangle(x1,y1,x2,y2,x3,y3);
-  output(x1,y1,x2,y2,x3,y3,area); 
+  int x,y;
+  x=input();
+  y=find_fibo(x);
+  output(x,y);
   return 0;
 }
