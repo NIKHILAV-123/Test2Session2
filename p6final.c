@@ -43,3 +43,4 @@ int main()
   output(string,substring,x);
   return 0;
 }
+
